@@ -132,6 +132,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
     // default drive command, disengages brakes
     public void drive(Translation2d linearVelocity, double angularVelocity) {
+        lockWheels = false;
         drive(linearVelocity, angularVelocity, false);
     }
 

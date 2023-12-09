@@ -38,7 +38,8 @@ public class RobotContainer {
     }
 
     private void configureBindings() {
-        driverController.a().onTrue(new InstantCommand(drivetrainSubsystem::lock));
+        driverController.b().onTrue(new InstantCommand(drivetrainSubsystem::lock));
+        driverController.a().onTrue(new InstantCommand(drivetrainSubsystem::zeroGyroscope));
     }
 
     public Command getAutonomousCommand() {
