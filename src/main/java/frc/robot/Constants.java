@@ -14,6 +14,7 @@ import edu.wpi.first.math.util.Units;
 import frc.lib.util.PIDConstants;
 import frc.lib.util.SwerveModuleConstants;
 import frc.robot.util.OrbitPID;
+import swervelib.parser.PIDFConfig;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -61,8 +62,9 @@ public final class Constants {
         public static final double DRIVE_CONVERSION_POSITION_FACTOR = (WHEEL_DIAMETER * Math.PI) / DRIVE_GEAR_RATIO;
         public static final double DRIVE_CONVERSION_VELOCITY_FACTOR = DRIVE_CONVERSION_POSITION_FACTOR / 60.0;
         public static final double ANGLE_CONVERSION_FACTOR = 360.0 / ANGLE_GEAR_RATIO;
-        // public static final double MAX_SPEED = 14.5 / 3.28084;
         public static final double MAX_SPEED = Swerve.AutoConstants.maxSpeed;
+        public static final double DRIVE_RAMP_RATE = 1.0; // TODO: tune
+        public static final double ANGLE_RAMP_RATE = 0.1; // TODO: tune
 
         /*
          * Ideally these should be independent but for getting started same pid/ff
@@ -71,6 +73,9 @@ public final class Constants {
         public static final PIDConstants drivePID = new PIDConstants(0.3, 0.0000, 0.0045);
         public static final SimpleMotorFeedforward driveSVA = new SimpleMotorFeedforward(0.1, 3, 0.4);
         public static final PIDConstants anglePID = new PIDConstants(0.023, 0.000001, 0.0);
+
+        public static final PIDFConfig drivePIDF = new PIDFConfig(0.3, 0.0, 0.0045); // TODO: tune
+        public static final PIDFConfig anglePIDF = new PIDFConfig(0.023, 0.000001, 0.0);
 
         /* Custom PID Controllers */
         public static final OrbitPID robotRotationPID = new OrbitPID(0.1, 0, 0.00005);
