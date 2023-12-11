@@ -23,6 +23,7 @@ public class RobotContainer {
     private final CommandXboxController driverController =
         new CommandXboxController(OperatorConstants.kDriverControllerPort);
 
+    // create our drivetrain and drive command
     private final DrivetrainSubsystem drivetrainSubsystem = new DrivetrainSubsystem();
     private final DefaultDriveCommand defaultDriveCommand = new DefaultDriveCommand(
         drivetrainSubsystem, 
@@ -33,16 +34,18 @@ public class RobotContainer {
     );
 
     public RobotContainer() {
+        // setting this as the default command causes it to run for this subsystem all the time, as we never interrupt it
         drivetrainSubsystem.setDefaultCommand(defaultDriveCommand);
         configureBindings();
     }
 
     private void configureBindings() {
-        driverController.b().onTrue(new InstantCommand(drivetrainSubsystem::lock));
+        // bind some buttons to other controls
+        driverController.b().onTrue(new InstantCommand(drivetrainSubsystem::lock)); // lock position by putting wheels in an X formation
         driverController.a().onTrue(new InstantCommand(drivetrainSubsystem::zeroGyroscope));
     }
 
     public Command getAutonomousCommand() {
-        return null;
+        return null; // no auto
     }
 }

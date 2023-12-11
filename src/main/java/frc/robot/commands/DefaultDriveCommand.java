@@ -32,7 +32,8 @@ public class DefaultDriveCommand extends CommandBase {
 
     @Override
     public void execute() {
-        double rotSpeed = -m_rotationSupplier.getAsDouble();
+        // some math stuff for the rotation buttons
+        double rotSpeed = -m_rotationSupplier.getAsDouble(); // equal to the turn stick input by default, gets overridden by the turn buttons later
         double curAngle = m_drivetrainSubsystem.getYaw().getDegrees() % 360.0;
         double curAngle2 = (m_drivetrainSubsystem.getYaw().getDegrees() + 180.0) % 360.0;
 
@@ -55,6 +56,7 @@ public class DefaultDriveCommand extends CommandBase {
             }
         }
 
+        // most important bit, updates the drivetrain to drive where we want
         m_drivetrainSubsystem.drive(
             new Translation2d(
                 m_translationXSupplier.getAsDouble(),

@@ -65,7 +65,6 @@ public final class Constants {
          * Ideally these should be independent but for getting started same pid/ff
          * values should work just fine
          */
-
         public static final PIDFConfig drivePIDF = new PIDFConfig(0.3, 0.0, 0.0045); // TODO: tune
         public static final PIDFConfig anglePIDF = new PIDFConfig(0.023, 0.000001, 0.0);
 
