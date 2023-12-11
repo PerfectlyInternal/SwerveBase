@@ -42,7 +42,7 @@ public class DefaultDriveCommand extends CommandBase {
         // 3 -> 180
         // 4 -> 270
 
-        if (this.rotationJoystick != null) {
+        if (this.rotationJoystick != null) { // check if we disabled the rotation buttons
             if (this.rotationJoystick.button(3).getAsBoolean())
                 rotSpeed = -Constants.Swerve.robotRotationPID.calculate(180.0, curAngle);
             else if (this.rotationJoystick.button(2).getAsBoolean())
